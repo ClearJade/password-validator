@@ -42,8 +42,18 @@ public class ValidatePassword {
      * Checks whether a password meets requirements
      * @return An int, the number of rules passed.
      */
-    public int isStrongPassword(){
+    public int getPasswordStrength(){
         int numOfRulesPassed = 0;
+        if (isNotPassword())
+            numOfRulesPassed++;
+        if (isValidLength())
+            numOfRulesPassed++;
+        if (containsDigits())
+            numOfRulesPassed++;
+        if (containsLetters())
+            numOfRulesPassed++;
+        if(usesBothCases())
+            numOfRulesPassed++;
 
         return numOfRulesPassed;
     }

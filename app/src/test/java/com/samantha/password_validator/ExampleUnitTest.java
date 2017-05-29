@@ -14,7 +14,7 @@ public class ExampleUnitTest {
     ValidatePassword password0 = new ValidatePassword();
     ValidatePassword password1 = new ValidatePassword("TEST");
     ValidatePassword password2 = new ValidatePassword("word1");
-    ValidatePassword password3 = new ValidatePassword("password123");
+    ValidatePassword password3 = new ValidatePassword("Password123");
     ValidatePassword password4 = new ValidatePassword("password");
     ValidatePassword password5 = new ValidatePassword("PaSsWoRd");
     ValidatePassword password6 = new ValidatePassword("0011223345");
@@ -82,14 +82,22 @@ public class ExampleUnitTest {
     public void bothCases() {
         //uses both cases
         assertTrue(password5.usesBothCases());
+        assertTrue(password3.usesBothCases());
 
         //do not use both cases
         assertFalse(password0.usesBothCases());
         assertFalse(password1.usesBothCases());
         assertFalse(password2.usesBothCases());
-        assertFalse(password3.usesBothCases());
         assertFalse(password4.usesBothCases());
         assertFalse(password6.usesBothCases());
+
+    }
+
+    @Test
+    public void testStrength(){
+        assertEquals(1, password0.getPasswordStrength());
+        assertNotSame(5, password1.getPasswordStrength());
+        assertEquals(5, password3.getPasswordStrength());
 
     }
 
