@@ -49,7 +49,7 @@ public class ValidatePassword {
     }
 
     /**
-     *
+     * Checks to make sure string isn't "password"
      * @return  A boolean, returns false if the text is password, true otherwise.
      */
     protected boolean isNotPassword(){
@@ -62,7 +62,7 @@ public class ValidatePassword {
     }
 
     /**
-     *
+     * Checks whether string is at least 8 chars.
      * @return  A boolean, true false if less than 8 characters, true otherwise.
      */
     protected boolean isValidLength(){
@@ -73,6 +73,53 @@ public class ValidatePassword {
             return true;
         }
     }
+
+    /**
+     * Checks whether string contains at least one number.
+     * @return  A boolean, true if contains at least one number, false otherwise.
+     */
+    protected boolean containsDigits(){
+        if(password.matches(".*\\d+.*")){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    /**
+     * Checks whether string contains at least one letter.
+     * @return  A boolean, true if contains at least one letter, false otherwise.
+     */
+    protected boolean containsLetters(){
+        if(password.matches(".*[a-zA-Z]+.*")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     *Checks whether string uses both cases.
+     * @return  A boolean, true if contains both cases false otherwise.
+     */
+    protected boolean usesBothCases(){
+        String upper = password.toUpperCase();
+        String lower = password.toLowerCase();
+
+        //if password is the same as either the all upper or lower case version it cannot be mixed case
+        if(password.equals(upper) || password.equals(lower)){
+            return false;
+        }
+        else{
+            return true;
+        }
+
+
+    }
+
 
 
 }
